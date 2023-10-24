@@ -1,0 +1,59 @@
+#+title:      learn-kitty
+#+date:       [2023-10-21 Sat 23:27]
+#+filetags:   :cli:terminal:
+#+identifier: 20231021T232717
+
+[[https://sw.kovidgoyal.net/kitty/][kitty website]]
+
+kitty is designed for power keyboard users. To that end all its controls work with the keyboard (although it fully supports mouse interactions as well). Its configuration is a simple, human editable, single file for easy reproducibility (I like to store configuration in source control).
+
+The code in kitty is designed to be simple, modular and hackable. It is written in a mix of C (for performance sensitive parts), Python (for easy extensibility and flexibility of the UI) and Go (for the command line kittens). It does not depend on any large and complex UI toolkit, using only OpenGL for rendering everything.
+
+Finally, kitty is designed from the ground up to support all modern terminal features, such as Unicode, true color, bold/italic fonts, text formatting, etc. It even extends existing text formatting escape codes, to add support for features not available elsewhere, such as colored and styled (curly) underlines. One of the design goals of kitty is to be easily extensible so that new features can be added in the future with relatively little effort.
+
+* Tabs and Windows
+[[https://sw.kovidgoyal.net/kitty/overview/]]
+
+** Scrolling
+
+| Line up                   | ctrl+shift+up                        |
+|---------------------------+--------------------------------------|
+| Line down                 | ctrl+shift+down                      |
+| Page up                   | ctrl+shift+page_up                   |
+| Page down                 | ctrl+shift+page_down                 |
+| Top                       | ctrl+shift+home                      |
+| Bottom                    | ctrl+shift+end                       |
+| Previous shell prompt     | ctrl+shift+z (see Shell integration) |
+| Next shell prompt         | ctrl+shift+x (see Shell integration) |
+| Browse scrollback in less | ctrl+shift+h                         |
+| Browse last cmd output    | ctrl+shift+g                         |
+
+** Tabs
+| Action            | Shortcut         |
+|-------------------+------------------|
+| New tab           | ctrl+shift+t     |
+| Close tab         | ctrl+shift+q     |
+| Next tab          | ctrl+shift+right |
+| Previous tab      | ctrl+shift+left  |
+| Next layout       | ctrl+shift+l     |
+| Move tab forward  | ctrl+shift+.     |
+| Move tab backward | ctrl+shift+,     |
+| Set tab title     | ctrl+shift+alt+t |
+
+** Windows
+
+| Action                | Shortcut                                  |
+|-----------------------+-------------------------------------------|
+| New window            | ctrl+shift+enter                          |
+| New OS window         | ctrl+shift+n                              |
+| Close window          | ctrl+shift+w                              |
+| Resize window         | ctrl+shift+r                              |
+| Next window           | ctrl+shift+]                              |
+| Previous window       | ctrl+shift+[                              |
+| Move window forward   | ctrl+shift+f                              |
+| Move window backward  | ctrl+shift+b                              |
+| Move window to top    | ctrl+shift+`                              |
+| Visually focus window | ctrl+shift+f7                             |
+| Visually swap window  | ctrl+shift+f8                             |
+| Focus specific window | ctrl+shift+1, ctrl+shift+2 … ctrl+shift+0 |
+
