@@ -18,7 +18,7 @@ where xxx may be txt, org, md or anything suitable. For example:
  * it is about the \'denote\' package
  * I used the keyword \'packages\' to indicate that fact
 
-This system:
+This naming system:
 
 * provides easier searching and filtering to find relevant content
 * because it relies on carefully considered and well-chosen file names and keywords to indicate related information
