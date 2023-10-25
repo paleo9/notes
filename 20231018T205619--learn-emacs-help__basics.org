@@ -47,5 +47,5 @@ Access the emacs manual with C-h r.
 
 * 
 
-* Help om modes
+* Help on modes
 Whenever you enter a new mode, learn about it using C-h m.
