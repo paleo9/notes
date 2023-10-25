@@ -1,0 +1,30 @@
+#+title:      install-kitty
+#+date:       [2023-10-21 Sat 22:50]
+#+filetags:   :cli:terminal:
+#+identifier: 20231021T225058
+
+[[https://sw.kovidgoyal.net/kitty/][Kitty web site]]
+
+* Installation
+
+The binaries fot kitty and kitten will be installed in ~/.local/kitty.app on Linux. The installer only touches files in that directory. To update kitty, simply re-run the command.
+It installs two applications: kitty, the terminal and kitten which allows you to install extensions and themes. 
+#+begin_src
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+
+cd ~/.local/bin
+ln -s ~/.local/kitty.app/bin/kitty
+ln -s ~/.local/kitty.app/bin/kitten
+#+end_src
+
+* Configuration
+kitty is highly configurable, everything from keyboard shortcuts to painting frames-per-second. Press ctrl+shift+f2 in kitty to open its fully commented sample config file in your text editor.
+
+* Change Theme
+#+begin_src
+  kitten themes
+#+end_src
+
+This produces a list and demo of each available theme in the theme kitten. The
+top menu allows you to filter on All, Dark, Light or Recent.
+
