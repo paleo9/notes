@@ -1,0 +1,11 @@
+#+title:      learn-hugo
+#+date:       [2023-10-20 Fri 17:53]
+#+filetags:   :generator:golang:static:website:
+#+identifier: 20231020T175357
+
+* Installation
+
+** Prerequisites
+
+Go, Git, Dart Sass
+
