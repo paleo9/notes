@@ -1,0 +1,49 @@
+#+title:      learn-emacs-org
+#+date:       [2023-10-20 Fri 21:03]
+#+filetags:   :markup:mode:
+#+identifier: 20231020T210302
+
+* Emacs Org Mode
+
+* Org mode blocks
+To add am emacs #+begin_ #+end_ structure:
+  C-s C-,
+and select / use the appropriate letter (s = src, e = example, etc)
+
+** Visibility cycling
+global cycling: S-TAB or C-u TAB
+local cycling: TAB
+When Emacs first visits an Org file, the global state is set to OVERVIEW, i.e.
+only the top level headlines are visible. This can be configured through
+the variable org-startup-folded, or on a per-file basis by adding a
+‘STARTUP’ keyword to ‘overview’, ‘content’, ‘showall’, ‘showeverything’
+or ‘show<n>levels’ (n = 2..5) like this: #+STARTUP: content
+
+** Lists
+Create unordered lists with - + or *
+Create ordered lists with 1. or 1
+Create description lists using :: to separate the term from the description
+Lists end with TWO  blank lines or when all list items are closed
+
+| Action                           | Key       |
+|----------------------------------+-----------|
+| Fold items                       | TAB       |
+| Insert new item at current level | M-RET     |
+| Insert new item with checkbox    | M-S-RET   |
+| Move item up                     | M-S-UP    |
+| Move item down                   | M-S-DOWN  |
+| Decrease indent                  | M-S-LEFT  |
+| Increase indent                  | M-S-RIGHT |
+| Toggle any checkbox on this line | C-C C-c   |
+| Cycle the entire list's bullets  | C-c -     |
+
+
+  1. Numbered list
+     1. New list item indented with M-RET then M-S-RIGHT
+     2. New list item at same level with M-RET
+  2. New list item at previous level with M-S-RET then M-S-Left
+
+
+Description lists
+ 1. Description list :: The description
+ 2. Another :: Another description
