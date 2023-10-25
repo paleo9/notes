@@ -1,0 +1,46 @@
+#+title:      learn-stow
+#+date:       [2023-10-20 Fri 12:23]
+#+filetags:   :configuration:dotfiles:utilities:
+#+identifier: 20231020T122346
+
+* Using Gnu stow to manage dotfiles
+The instructions below show how to move emacs init.el, xmonad stack.yaml
+and xmonad.hs, xmobar xmobarrc, and bash custom configs into a directory
+named dotfiles and use Gnu stow to replace those files with symlinks to
+those relocated files.
+
+#+begin_src shell
+
+# Create your dotfiles directory, don't make it hidden
+
+mkdir ~/dotfiles
+cd ~/dotfiles
+
+# You will store the actual files in their own parent directories
+
+mkdir bash
+mkdir -p config/.config/{emacs,xmonad,xmobar}
+
+# Move the actual files to the newly created parent directories
+
+mv ~/.config/emacs/init.el config/.config/emacs
+mv ~/.config/xmonad/stack.yaml config/.config/xmonad
+mv ~/.config/xmonad/xmonad.hs config/.config/xmonad
+mv ~/.config/xmobar/xmobarrc config/.config/xmobar
+
+mv ~/.bash_myconfig bash
+mv ~/.profile_myconfig bash
+
+# Run the stow command to create the symlinks to the actual files that you have just moved
+
+stow config
+stow bash
+
+# Check your symlinks
+
+ls -al ~/.config/emacs/init.el
+ls -al ~/.config/xmonad/stack.yaml
+ls -al ~/.config/xmonad/xmonad.hs
+ls -al ~/.config/xmobar/xmobarrc
+
+#+end_src
