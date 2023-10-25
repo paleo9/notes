@@ -1,0 +1,55 @@
+#+title:      learn-haskell-functions
+#+date:       [2023-10-24 Tue 12:12]
+#+filetags:
+:constructs:language:programming:
+#+identifier: 20231024T121213
+
+* Haskell functions
+
+** Function Names
+
+When using functions the name is followed by parameters seperated by spaces.
+When defining functions, there's a = and after that we define what the function does.
+
+A function without parameters is a definition or name.
+#+begin_src haskell
+  myDef = "A definition or name is also a function, it just has no parameters!"
+#+end_src
+
+Functions in Haskell don't have to be in any particular order, so it doesn't
+matter if you define doubleMe first and then doubleUs or if you do it the
+other way around.
+
+Function names begin with a small letter. A common practice is to add a prime
+mark (' or single-quote) to the end of a function name to define a similar
+function for whatever reason.  We usually use ' to either denote a strict
+version of a function (one that isn't lazy) or a slightly modified version
+of a function or a variable.
+
+
+#+begin_src haskell
+  -- declare the type signature
+  doubleMe :: Int -> Int
+
+  -- define the function
+  doubleMe x = x + x
+
+  -- use the function
+  -- doubleMe 3
+#+end_src
+
+When creating larger functions it is good practice to build it from smaller, simpler functions.
+
+#+begin_src haskell
+  doubleUs x y = doubleMe x + doubleMe y
+  tripleMe x = (doubleMe x) + x
+#+end_src
+
+This makes it easier to understand, also any underlying functions can be redefined, improved,
+or corrected without needing to change functions that use them.
+
+#+begin_src  haskell
+  doubleSmallNumber x = if x > 100
+                          then x
+                          else doubleMe x
+#+end_src
