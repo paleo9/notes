@@ -1,0 +1,64 @@
+#+title:      learn-emacs_denote
+#+date:       [2023-10-17 Tue 20:05]
+#+filetags:   :packages:
+#+identifier: 20231017T200541
+
+* Introduction
+Denote helps to organise your notes by providing a regulated file naming
+scheme and tools to manage the filenames. It is not restricted to notes;
+denote provides tools such that any files can be given this naming scheme. 
+
+* Installation
+package-update
+package-install RET denote RET
+
+* File naming
+This is designed to allow searching for notes files. The filename is
+constructed as follows:
+  the date and time that the note was created
+  --title
+  __keyword1_keyword2...
+
+Searching on -- and __ makes it easier to specify keywords and titles.
+If a new *denote* file is created from an existing, ordinary file, the date
+and time will be the original time of creation, not the time it was converted
+to a *denote* file.
+
+* File location
+By default, files are stored in ~/Documents/notes. Use dired and search
+forward / backward with _ or - to find titles and keywords. Multiple files
+may be marked. Pressing k will remove marked files from the list. They are
+not deleted, merely not displayed. Pressing g will revert the buffer, so
+restoring the hidden lines.
+Pressing t will toggle the marks and k will hide the non-relavent lines.
+Search allows regexp, so typing the title will select the first matching title,
+and further pattern matching will further refine the selection.
+
+* Frontmatter
+The frontmatter is the section at the top of the file. It is populated using
+the information given in the filename. If the filename changes, the frontmatter
+will reflect the changes. If the frontmatter changes, the filename will
+likewise change.
+
+* Linking to other denote documents
+Denote is able to create hyperlinks to other *denote* files. Linked files can
+also show which files link to them.
+The link behaves exactly like a standard hyperlink, but uses the *denote* file's
+date-time part of the filename. If a file is renamed, the link will not be
+affected (as long as the filename retains the *denote* file naming scheme.
+
+* Meta notes
+A note that talks about other notes.  Create a new file with keyword metanote.
+M-x denote-add-links RET
+use regexp to  match keywords (e.g. the string emacs will select all files with
+emacs as a keyword.
+All selected links will be added to the document.
+Use denote-link-find-file to vew linked files in the minibuffer
+HINT use dired kill lines (k) to filter out files that are not of interest.
+
+* Denote commands
+M-x denote-dired-rename-file (C-C n r)         Rename file to include TITLE and KEYWORDS.
+M-x denote-link                                Create link to TARGET note in variable 'denote-directory'
+M-x denote-link-backlinks                      Produce a buffer with files linking to current note.
+M-x denote-link-find-file                      Use minibuffer completion to visit linked file.
+M-x denote-add-links                           Insert links to all notes matching REGEXP
