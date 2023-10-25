@@ -1,0 +1,51 @@
+#+title:      learn-emacs-help
+#+date:       [2023-10-18 Wed 20:56]
+#+filetags:   :basics:
+#+identifier: 20231018T205619
+
+* Introduction
+Use emacs help to study a snippet at a time, come back to it, move onto
+the next one, gradually expanding your knowledge.
+
+All emacs help commands start with C-h
+
+|-----+-----------------------------------------|
+| C-h | Help for                                |
+|-----+-----------------------------------------|
+| ?   | all help key bindings                   |
+| f   | functions                               |
+| v   | variables                               |
+| o   | functions or variables                  |
+| k   | the given key binding                   |
+| w   | which key the given command is bound to |
+| m   | the current modes (major and minor      |
+
+When the point is a over a symbol (proper name) of a function or variable,
+the C-h f, C-h v or C-h o will use that as the default choice.
+  
+* C-h as a suffix
+Begin typing the prefix of a command, then hit C-h. A help buffer opens up listing all the
+functions bound to that comand prefix.
+
+ * Type C-x r
+ * Hit C-h
+ * The help buffer displays all the C-x r commands - all the
+commands relating to registers in this case.
+
+* Reading manuals using the info reader
+
+Emacs contains the info reader.
+
+ * Access it with C-h i
+ * Topics are listed in the menu. Use n and p to navigate.
+
+** Reading the emacs manual
+
+Access the emacs manual with C-h r.
+
+
+
+* 
+
+* Help om modes
+Whenever you enter a new mode, learn about it using C-h m.
