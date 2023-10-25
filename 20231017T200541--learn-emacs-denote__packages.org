@@ -3,6 +3,8 @@
 #+filetags:   :packages:
 #+identifier: 20231017T200541
 
+Repository: [https://github.com/protesilaos/denote]
+
 * Introduction
 Denote helps to organise your notes by providing a regulated file naming
 scheme and tools to manage the filenames. It is not restricted to notes;
