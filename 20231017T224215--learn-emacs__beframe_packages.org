@@ -1,0 +1,31 @@
+#+title:      learn-emacs
+#+date:       [2023-10-17 Tue 22:42]
+#+filetags:   :beframe:packages:
+#+identifier: 20231017T224215
+
+[[https://odysee.com/@protesilaos:6/emacs-introduction-to-my-'beframe':d][Watch: Beframe author's tutorial video on Odysee]]
+
+* Pre knowledge
+
+emacs projects (C-x p commands)
+
+* Introduction
+
+Emacs lists all buffers into one long list. This makes finding a particular
+buffer difficult if you have many buffers open. Beframe creates a list of
+buffers that are only related to this frame.
+
+With (beframe-mode 1) in the init.el file:
+ * Beframe works automatically when a new frame is created
+ * Emacs creates a new frame with C-x 5 5
+ * Switching to a different project will produce a new frame
+ * Emacs M-x switch-to-xxx commands are beframe enabled   
+
+* Point of entry
+
+| Command                        | Action                                                  |
+|--------------------------------+---------------------------------------------------------|
+| beframe-switch-buffer          | Switch to BUFFER in the current frame using completion. |
+| beframe-switch-buffer-in-frame | Switch to BUFFER that belongs to FRAME.                 |
+| beframe-buffer-menu            | Produce a 'buffer-menu- for the current FRAME.          |
+
