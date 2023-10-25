@@ -1,0 +1,160 @@
+#+title:      learn-ssh-gpg
+#+date:       [2023-10-19 Thu 12:34]
+#+filetags:   :keys:security:github:
+#+identifier: 20231019T123436
+#+author: Stephen Wardill
+
+* SSH and Github
+[[https://docs.github.com/en/authentication/connecting-to-github-with-ssh][Github: Connecting to GitHub with SSH]]
+[[https://www.openssh.com/][OpenSSH website]]
+
+* Create authentication and signing keys with passphrases
+
+[[https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent]]
+Github recommends ed25519 for new ssh keys. ed25519 is a new algorithm added
+in OpenSSH. Support for it in clients is not yet universal. Thus its use
+in general purpose applications may not yet be advisable.
+
+Github allows two kinds of ssh keys, authentication and signing.
+Create one of each by naming them github-auth and github-sign.
+
+#+BEGIN_SRC shell
+  # generate the key, provide a filename and add a secure passphrase when prompted
+  ssh-keygen -t ed25519 -C "s5n.wardill@gmail.com"
+#+END_SRC
+
+* Add your new SSH keys to your Github Account
+[[https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account]]
+
+You may use the same key for both authentication and signing by entering the same key each time.
+
+ 1. go to github.com
+ 2. click on your avatar
+ 3. scroll down and select Settings
+ 4. select SSH and GPG keys
+ 5. add your authentication key
+ 6. add your signing key
+
+
+* Working with SSH passphrases
+[[https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases]]
+With SSH keys, if someone gains access to your computer, the attacker can
+gain access to every system that uses that key. To add an extra layer of
+security, you can add a passphrase to your SSH key. To avoid entering the
+passphrase every time you connect, you can securely save your passphrase
+in the SSH agent.
+
+**** Add or change a passphrase
+
+#+BEGIN_SRC shell
+  # generate the key, add a secure passphrase when prompted
+  ssh-keygen -p -f ~/.ssh/ed25519
+#+END_SRC
+
+**** Auto loading ssh-agent
+Add the following to your .profile:
+
+#+BEGIN_SRC shell
+  env=~/.ssh/agent.env
+  agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
+
+  agent_start () {
+      (umask 077; ssh-agent >| "$env")
+      . "$env" >| /dev/null ; }
+
+  agent_load_env
+
+  # agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
+  agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+
+  if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+      agent_start
+      ssh-add
+  elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+      ssh-add
+  fi
+
+  unset env
+#+END_SRC
+
+Now, when you first run Bash, you are prompted for your passphrase:
+
+#+BEGIN_SRC
+> Initializing new SSH agent...
+> succeeded
+> Enter passphrase for /c/Users/YOU/.ssh/id_rsa:
+> Identity added: /c/Users/YOU/.ssh/id_rsa (/c/Users/YOU/.ssh/id_rsa)
+> Welcome to Git (version 1.6.0.2-preview20080923)
+>
+> Run 'git help git' to display the help index.
+> Run 'git help <command>' to display help for specific commands.
+The ssh-agent process will continue to run until you log out, shut down your computer, or kill the process.
+#+END_SRC
+
+
+* Generating a new GPG key
+#+begin_src shell
+  gpg --full-generate-key
+#+end_src
+
+Press Enter to accept the defaults when prompted. These are key-type (rsa) key
+size (3072 bits), valid until (doesn't expire). 
+
+Add your personal information - real name, comments, email address. Provide a passphrase.
+
+#+begin_src shell
+  gpg --list-secret-keys --keyid-format=long
+
+  pg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+/home/stephen/.gnupg/pubring.kbx
+--------------------------------
+sec   rsa3072/EB............C7 2023-10-19 [SC]
+      37........................C7
+uid                 [ultimate] Stephen Wardill (paleo9 palo9) <s5n.wardill@gmail.com>
+ssb   rsa3072/9C............30 2023-10-19 [E]
+#+end_src
+
+Copy the key id, the string beginning EB and ending C7 in the example above.
+Paste it into the command below:
+#+begin_src shell
+  gpg --armor --export 37....C7
+#+end_src
+
+This will print the GPG key id in ASCII armor format.
+
+Copy your GPG key:
+-----BEGIN PGP PUBLIC KEY BLOCK----
+......
+-----END PGP PUBLIC KEY BLOCK-----
+
+and add the key to you github account as for SSH.
+
+* Tell Git about your signing key
+
+  Copy the key id (37....C7) above then
+  1. remove any existing GPG keys from Git
+  2. set it as your primary git signing key
+  3. optionally configure git to automatically sign all commits
+     
+#+begin_src shell
+  git config --global --unset gpg.format
+  git config --global user.signingkey 37....C7
+  git config --global commit.gpgsign true
+#+end_src
+
+* Manually signing commits locally
+Just add the -S flag to the git commit command, then provide your passphrase.
+#+begin_src shell
+  git commit -S -m "Your commit message"
+#+end_src
+
+* Push your commits to github and respond to the subsequent pull request
+When you have finished creating commits locally, push the changes to your
+github repository. Then go to github repository and deal with the subsequent
+pull request.
+
+#+begin_src shell
+  git push
+#+end_src
