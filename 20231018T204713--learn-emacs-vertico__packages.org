@@ -1,0 +1,17 @@
+#+title:      learn-emacs-vertico
+#+date:       [2023-10-18 Wed 20:47]
+#+filetags:   :packages:
+#+identifier: 20231018T204713
+
+[[https://github.com/minad/vertico][vertico github]]
+
+
+* Vertico
+When using the minibuffer, with M-x for example, vertico opens an expanded region to show all possible options.
+At first all M-x commands will be listed in alphabetical order, one per line. As you begin to type, all possible completions are shown.
+
+* Installation
+#+begin_src emacs
+  M-x package-install vertico
+  M-x vertico-mode
+#+end_src
