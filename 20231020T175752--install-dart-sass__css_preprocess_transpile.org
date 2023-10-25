@@ -1,0 +1,27 @@
+#+title:      install-dart-sass
+#+date:       [2023-10-20 Fri 17:57]
+#+filetags:   :css:preprocess:transpile:
+#+identifier: 20231020T175752
+
+* Dart Sass
+Dart Sass is the primary implementation of Sass, which means it gets new
+features before any other implementation. It’s fast, easy to install,
+and it compiles to pure JavaScript which makes it easy to integrate into
+modern web development workflows.
+
+* Installation
+1. To install Dart Sass to  a directory in your path,. In this example I will use ~/.local/bin directory.
+2. Download the latest prebuilt binary from [[https://github.com/sass/dart-sass/releases]]
+3. Unpacke the tarball and nove the contents to your chosen directory:
+
+#+begin_src shell
+  # Enter the directory where the file was sownloaded and extract the files from the tar.gz file.
+    cd Downloads
+    tar -xzf dart-sass-....tar.gz
+
+  # Move both sass and src/ to your ~/.local/bin directory.
+    mv sass src ~/.local/bin
+
+  # Check sass is found
+    sass --version
+#+end_src
