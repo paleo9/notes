@@ -1,0 +1,36 @@
+#+title:      learn-emacs-basics
+#+date:       [2023-10-19 Thu 13:00]
+#+filetags:   
+#+identifier: 20231019T130056
+
+* Copy, Cut, Paste
+[[https://www.emacswiki.org/emacs/CopyAndPaste][Emacs wiki copy and paste]]
+
+| Common Name | Common Key | Emacs Name     | Emacs Key |
+|-------------+------------+----------------+-----------|
+| Selection   | —          | Region         | —         |
+| Clipboard   | —          | Kill ring      | —         |
+| Cut         | C-x        | Kill           | C-w       |
+| Copy        | C-c        | kill-ring-save | M-w       |
+| Paste       | C-v        | Yank           | C-y       |
+| —           | —          | yank-pop       | M-y       |
+
+* Bookmarks
+Emacs bookmarks record positions in files you can jump to. They
+persist across sessions.
+
+1. bookmark-set C-x r m {name} RET ::
+   save the current position using the filename as the default bookmark name.
+   using M prevents overwriting any existing bookmark
+   
+2. bookmark-jump C-x r b name RET ::
+   jump to the named bookmark
+   
+3. list-bookmarks C-x r l ::
+   list all bookmarks in a separate buffer. You can edit or annotate your bookmarks
+   
+4. M-x bookmark-save ::
+   setting the bookmark-save-flag to 1 saves your bookmarks with every bookmark command.
+   setting bookmark-save-flag to nil only saves when you explicitly use M-x bookmark-save
+
+ 
