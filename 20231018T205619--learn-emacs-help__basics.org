@@ -30,7 +30,7 @@ functions bound to that comand prefix.
  * Type C-x r
  * Hit C-h
  * The help buffer displays all the C-x r commands - all the
-commands relating to registers in this case.
+   commands relating to registers in this case.
 
 * Reading manuals using the info reader
 
@@ -42,10 +42,6 @@ Emacs contains the info reader.
 ** Reading the emacs manual
 
 Access the emacs manual with C-h r.
-
-
-
-* 
 
 * Help on modes
 Whenever you enter a new mode, learn about it using C-h m.
