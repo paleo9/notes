@@ -20,7 +20,7 @@ where xxx may be txt, org, md or anything suitable. For example:
 
 This naming system:
 
-* provides easier searching and filtering to find relevant content
-* because it relies on carefully considered and well-chosen file names and keywords to indicate related information
-* so allowing all notes to be kept in a single directory
+* provides easier searching and filtering to find relevant content because it...
+* relies on carefully considered and well-chosen file names and keywords to indicate related information so that it...
+* encourages all notes to be kept in a single directory, or a few specialised ones, thereby...
 * freeing you from concerns of file location and directory structure
