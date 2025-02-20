@@ -91,6 +91,29 @@ Now, when you first run Bash, you are prompted for your passphrase:
 The ssh-agent process will continue to run until you log out, shut down your computer, or kill the process.
 #+END_SRC
 
+*** Add keys to ssh-agent
+
+#+BEGIN_SRC shell
+$ ssh-add ~/.ssh/<your-auth-key-filename>
+> Enter passphrase for /home/YOU/.ssh/my-github-auth: 
+> Identity added: /home/YOU/.ssh/my-github-auth (myemail@example.com)
+#+END_SRC
+
+*** Test your ssh connection
+[https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection]
+
+#+BEGIN_SRC shell
+$ ssh -T github.com
+
+> The authenticity of host 'github.com (20.26.156.215)' can't be established.
+> ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+> This key is not known by any other names.
+> Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+> Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+> Hi YOU! You've successfully authenticated, but GitHub does not provide shell access.
++END_SRC
+
+
 
 * Generating a new GPG key
 #+begin_src shell
