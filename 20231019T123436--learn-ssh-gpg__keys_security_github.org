@@ -105,7 +105,7 @@ $ ssh-add ~/.ssh/<your-auth-key-filename>
 #+BEGIN_SRC shell
 $ ssh -T github.com
 
-> The authenticity of host 'github.com (20.26.156.215)' can't be established.
+> The authenticity of host 'github.com (20.26.156.215)' can\'t be established.
 > ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
 > This key is not known by any other names.
 > Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
@@ -113,7 +113,7 @@ $ ssh -T github.com
 > Hi YOU! You've successfully authenticated, but GitHub does not provide shell access.
 #+END_SRC
 
-
+Now, when you push to your github repository, you are not asked to enter your passphrase.
 
 * Generating a new GPG key
 #+begin_src shell
