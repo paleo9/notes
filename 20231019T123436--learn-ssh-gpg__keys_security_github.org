@@ -111,7 +111,7 @@ $ ssh -T github.com
 > Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 > Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
 > Hi YOU! You've successfully authenticated, but GitHub does not provide shell access.
-+END_SRC
+#+END_SRC
 
 
 
